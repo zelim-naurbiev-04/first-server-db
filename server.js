@@ -3,6 +3,7 @@
 const { error } = require('console');
 const express = require('express');
 const path = require('path');
+const morgan = require('morgan')
 
 const app = express();
 
@@ -17,21 +18,21 @@ app.listen(PORT, (error) => {
 })
 
 // Middleware
+// app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+// app.use(express.static(path.join(__dirname, 'styles')));
 
 app.use((req, res, next) => {
     console.log(`path: ${req.path}`);
     console.log(`method: ${req.method}`);
     next();
-});
+})
 
-app.use(express.static('styles'));
+app.use(express.static('styles'))
 
 // Get запросы
 
-app.get('/', (req, res) => {
-    const title = 'Home;'
-    res.render(createPath('index'), {title})
-})
+ app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+
 
 app.get('/contacts', (req, res) => {
     const title = 'contacts'

@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body{
+    background-color: rgb(2, 2, 27);
+}
+
+a {
+    color: rgba(255, 255, 255, 0.894);
+}
+
+
+header{
+   width: 100%;
+   height: 60px;
+   display: flex;
+   align-items: center;
+}
+
+header ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 26px;
+    width: 600px;
+    margin: 0 auto;
+}
+
