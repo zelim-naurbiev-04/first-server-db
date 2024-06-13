@@ -21,11 +21,11 @@ app.listen(PORT, (error) => {
 // app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 // app.use(express.static(path.join(__dirname, 'styles')));
 
-app.use((req, res, next) => {
-    console.log(`path: ${req.path}`);
-    console.log(`method: ${req.method}`);
-    next();
-})
+// app.use((req, res, next) => {
+//     console.log(`path: ${req.path}`);
+//     console.log(`method: ${req.method}`);
+//     next();
+// })
 
 app.use(express.static('styles'))
 
@@ -44,9 +44,21 @@ app.get('/contacts', (req, res) => {
     res.render(createPath('contacts'), {contacts, title})
 })
 
+app.get('/', (req, res) => {
+    const title = 'home';
+    res.render(createPath('index'), {title})
+})
+
 app.get('/posts/:id', (req, res) => {
-    const title = 'posts';
-    res.render(createPath('posts'), {title})
+    const title = 'Post';
+    const post = {
+        id: '1',
+        text: "Lorem ipsum dolor amet jnvjfnvjf fjf jf fj  jf nfjf nj ",
+        title: 'Post Title',
+        date: '05.05.2024',
+        author: 'Zelim'
+        }
+    res.render(createPath('post'), {title, post})
 })
 
 app.get('/posts', (req, res) => {
@@ -58,6 +70,7 @@ app.get('/post', (req, res) => {
     const title = 'post'
     res.render(createPath('post'), {title})
 })
+
 
 app.get('/add-post', (req, res) => {
     const title = 'add-post'
